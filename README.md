@@ -1,4 +1,4 @@
-##Welcome to Reservester - Open Table Clone project built while at Startup Institute  **
+##Welcome to Reservester - Open Table Clone project **
 
 ####Work in Progress at (http://reservester.herokuapp.com/).
 
