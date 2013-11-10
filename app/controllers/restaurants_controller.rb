@@ -28,7 +28,11 @@ class RestaurantsController < ApplicationController
 
   # Show all restaurants
   def index
-    @restaurants = Restaurant.all
+    # @restaurants = Restaurant.all
+    @restaurants = Restaurant.near(request.location.city, 100, :order  => "distance")
+    if @restaurants.empty?
+      # @restaurants = Restaurant.all
+    end
 		respond_to :html
   end
 

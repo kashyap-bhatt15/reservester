@@ -1,6 +1,10 @@
 class Restaurant < ActiveRecord::Base
 	
   attr_accessible :address, :description, :name, :phone, :image, :menu
+  attr_accessible :latitude, :longitude
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+
 
   # Have it only to allow seed data
   attr_accessible :owner_id

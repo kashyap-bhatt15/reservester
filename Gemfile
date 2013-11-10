@@ -54,3 +54,5 @@ end
 gem 'mandrill-rails'
 
 gem 'newrelic_rpm'
+
+gem 'geocoder'
