@@ -5,10 +5,10 @@ Reservester::Application.routes.draw do
 
   #resources :reservations
 
-  get '/dashboard' => 'owners#dashboard', :as => :dashboard
+  get '/dashboard' => 'users#dashboard', :as => :dashboard
   
-  devise_for :owners
-  #, :controllers => { :sessions => "owners/sessions" }
+  devise_for :users
+  #, :controllers => { :sessions => "users/sessions" }
 
   resources :restaurants do
     resources :reservations, only: [:new, :create]

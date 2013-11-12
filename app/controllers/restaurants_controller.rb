@@ -1,13 +1,12 @@
 # Controller for restaurants
 class RestaurantsController < ApplicationController
-  before_filter :authenticate_owner!, only: [:new, :create, :destroy, :edit, :update]
+  before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :update]
   # Creat an object for creating new restaurant
 
-  before_filter :check_if_owner!, only: [:edit, :update, :destroy]
+  before_filter :check_if_user!, only: [:edit, :update, :destroy]
 
   def new
     @restaurant = Restaurant.new
-
     respond_to :html
   end
   
@@ -16,7 +15,7 @@ class RestaurantsController < ApplicationController
     
     @restaurant = Restaurant.new(params[:restaurant])
     # Owner id can't be mass-assigned
-    @restaurant.owner_id = current_owner.id
+    @restaurant.user_id = current_user.id
     respond_to do |format|
       if @restaurant.save
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
@@ -29,9 +28,9 @@ class RestaurantsController < ApplicationController
   # Show all restaurants
   def index
     # @restaurants = Restaurant.all
-    @restaurants = Restaurant.near(request.location.city, 100, :order  => "distance")
+    @restaurants = Restaurant.near("request.location.city", 100, :order  => "distance")
     if @restaurants.empty?
-      # @restaurants = Restaurant.all
+      @restaurants = Restaurant.all
     end
 		respond_to :html
   end
@@ -82,8 +81,8 @@ class RestaurantsController < ApplicationController
   end
 
   private
-    def check_if_owner!
-      if current_owner.own?(params[:id])
+    def check_if_user!
+      if current_user.own?(params[:id])
         return
       else
         flash[:error] = "Woo!!! You are not owner of this restaurant"

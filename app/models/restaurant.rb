@@ -7,10 +7,10 @@ class Restaurant < ActiveRecord::Base
 
 
   # Have it only to allow seed data
-  attr_accessible :owner_id
+  attr_accessible :user_id
   attr_accessible :category_ids
 
-  validates_presence_of :name, :address, :description, :phone, :owner_id
+  validates_presence_of :name, :address, :description, :phone, :user_id
 	validates_uniqueness_of :address, :case_sensitive => false
 	validates_uniqueness_of :phone
 	# Client side phone validation is more perfect than this regex so removing it for now.
@@ -20,7 +20,9 @@ class Restaurant < ActiveRecord::Base
 
   mount_uploader :menu, MenuUploader
 
-  belongs_to :owner
+  # belongs_to :owner, class_name: "User", foreign_key: "owner_id"#, -> { where role: "owner" }
+  # belongs_to :user, foreign_key: "owner_id"
+  belongs_to :user
   has_many :reservations
 
   has_many :categorizations, dependent: :destroy
@@ -32,7 +34,7 @@ class Restaurant < ActiveRecord::Base
  #                               reject_if: :all_blank
  # accepts_nested_attributes_for :categories_restaurants
 
-  def belong_to?(owner)
-  	self.owner.eql?(owner)
+  def belong_to?(user)
+  	self.user.eql?(user)
   end
 end

@@ -12,7 +12,7 @@ class ReservationMailer < ActionMailer::Base
     @reservation = reservation
     @url  = 'http://localhost:3000'
     @subject = "New reservation for #{@reservation.restaurant.name} is received"
-    mail(to: @reservation.restaurant.owner.email, subject: @subject)
+    mail(to: @reservation.restaurant.user.email, subject: @subject)
   end
 
 

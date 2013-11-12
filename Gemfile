@@ -53,6 +53,7 @@ end
 #gem 'postmark-rails'
 gem 'mandrill-rails'
 
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 
 gem 'geocoder'
+gem 'gmaps4rails'

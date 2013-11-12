@@ -27,7 +27,7 @@
 
 <p>
   <b>Owner</b>
-  <%= @restaurant.owner.name %>
+  <%= @restaurant.user.name %>
 </p>
 
 <p>
@@ -36,7 +36,7 @@
 
 </p>
 
-<% if @restaurant.belong_to?(current_owner) %>
+<% if @restaurant.belong_to?(current_user) %>
   <p>
     <h3>Reservations</h3>
     <% @restaurant.reservations.each do |reservation| %>

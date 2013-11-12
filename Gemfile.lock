@@ -96,6 +96,7 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     geocoder (1.1.8)
+    gmaps4rails (2.0.4)
     guard (1.8.1)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
@@ -132,7 +133,6 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.7)
-    newrelic_rpm (3.6.5.130)
     nokogiri (1.5.10)
     orm_adapter (0.4.0)
     pg (0.15.0)
@@ -235,12 +235,12 @@ DEPENDENCIES
   figaro
   fog (~> 1.3.1)
   geocoder
+  gmaps4rails
   guard-rspec
   jquery-rails
   launchy
   libnotify
   mandrill-rails
-  newrelic_rpm
   pg
   rails (= 3.2.13)
   rb-inotify

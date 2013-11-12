@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131110172146) do
+ActiveRecord::Schema.define(:version => 20131112051404) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -26,25 +26,6 @@ ActiveRecord::Schema.define(:version => 20131110172146) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
-
-  create_table "owners", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "name"
-  end
-
-  add_index "owners", ["email"], :name => "index_owners_on_email", :unique => true
-  add_index "owners", ["reset_password_token"], :name => "index_owners_on_reset_password_token", :unique => true
 
   create_table "reservations", :force => true do |t|
     t.datetime "reservetime"
@@ -67,21 +48,29 @@ ActiveRecord::Schema.define(:version => 20131110172146) do
     t.datetime "updated_at",  :null => false
     t.string   "image"
     t.string   "menu"
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
   end
 
-  create_table "test1s", :force => true do |t|
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "role"
   end
 
-  create_table "tests", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+  add_index "users", ["email"], :name => "index_owners_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_owners_on_reset_password_token", :unique => true
 
 end
