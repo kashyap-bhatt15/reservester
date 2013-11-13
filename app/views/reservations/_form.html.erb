@@ -14,28 +14,28 @@
   <div class="control-group">
     <%= f.label :email %>
     <div class="controls">
-      <%= f.email_field :email %>
+      <%= f.email_field :email, "data-required" => true, "data-type" => "email" %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :phone %>
     <div class="controls">
-      <%= f.text_field :phone %>
+      <%= f.text_field :phone, "data-required" => true, "data-type" => "phone" %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :reservetime %>
+    <%= f.label "Reserve at" %>
     <div class="controls">
-      <%= f.datetime_select :reservetime %>
+      <%= f.datetime_select :reservetime, "data-required" => true %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :message%>
     <div class="controls">
-      <%= f.text_area :message %>
+      <%= f.text_area :message, rows: :"5" %>
     </div>
   </div>
 

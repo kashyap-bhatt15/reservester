@@ -11,9 +11,9 @@ Reservester::Application.routes.draw do
   #, :controllers => { :sessions => "users/sessions" }
 
   resources :restaurants do
-    resources :reservations, only: [:new, :create]
+    resources :reservations, only: [:new, :create, :index]
   end
-  resources :reservations, only: [:index, :show, :edit, :update, :destroy]
+  resources :reservations, only: [:show, :edit, :update, :destroy]
 
 
   # The priority is based upon order of creation:
