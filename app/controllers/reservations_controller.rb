@@ -1,5 +1,15 @@
 class ReservationsController < ApplicationController
-	def create
+	before_filter :authenticate_user!
+
+  before_filter :is_restaurant_owner? , only: [:new]
+
+  def new
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    # New Reservation form on the show page only
+    @reservation = Reservation.new
+  end
+
+  def create
     @restaurant = Restaurant.find params[:restaurant_id]
     @reservation = @restaurant.reservations.build params[:reservation]
 
@@ -19,5 +29,15 @@ class ReservationsController < ApplicationController
     @reservation.destroy
 
     redirect_to @reservation.restaurant
+  end
+
+  def is_restaurant_owner?
+    restaurant = Restaurant.find(params[:restaurant_id])
+    unless restaurant.belong_to?(current_user)
+      return
+    else
+      flash[:info] = "You are making reservation for your own restaurant."
+      return
+    end
   end
 end

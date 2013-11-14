@@ -47,8 +47,9 @@
   <%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant) %> |
   <%= link_to 'Destroy', @restaurant, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% else %>
-  <h2>New Reservation</h2>
+  <!--<h2>New Reservation</h2>
   <%= render 'reservations/form', :reservation => @reservation %>
+  -->
 <% end %>
 
 <%= link_to 'Back', restaurants_path %>
